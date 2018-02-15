@@ -21,6 +21,13 @@ class AccountAdapter(DefaultAccountAdapter):
 
     """Customize Allauth emails to match our current patterns"""
 
+    def is_open_for_signup(self, request):
+        """Return False to disable account signup.
+
+        See: http://django-allauth.readthedocs.io/en/latest/advanced.html#creating-and-populating-user-instances
+        """
+        return False
+
     def format_email_subject(self, subject):
         return force_text(subject)
 
